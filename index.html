@@ -1,0 +1,97 @@
+<html>
+  <head>
+    <link id="styleSheet" rel="stylesheet" type="text/css" href="styles_bgcolor_fgcolor.css" />
+    <script type="text/javascript" src="helper.js"></script>
+  </head>
+  <body>
+    <div style="width:500px;">  
+      <h1 style="text-align:right;">Breadcrumb Style</h1>
+      <div class="popUp" id="breadcrumbNav">
+        <a class="beforePath" href="#">http://subdomain</a>
+        <span class="separatorNormal">.</span>
+        <a class="beforePath" href="#">example.com</a>
+        <span class="separatorHighlight">/</span>
+        <a class="afterPath" href="#">path1</a>
+        <span class="separatorNormal">/</span>
+        <a class="afterPath" href="#">path2</a>
+        <span class="separatorNormal">/</span>
+      </div>
+      <h1 style="text-align:right;">Folder Style</h1>
+      <div class="popUp" id="folderNav">
+        <ul>
+          <li class="folderBullet"><a class="folder" href="#">https://subdomain.example.com/path1/path2/</a></li>
+          <li class="folderBullet"><a class="folder" href="#">https://subdomain.example.com/path1/</a></li>
+          <li class="folderBullet"><a class="folder" href="#">https://example.com/</a></li>
+          <li class="folderBullet"><a class="folder" href="#">https://subdomain.example.com/</a></li>        
+        </ul>
+      </div>    
+    </div>
+    <script type="text/javascript">
+          function highlight(e) {
+            var target = e.target;
+            if (target.nodeName.toLowerCase() === 'a') {
+              var className = target.className;          
+              // if the mouse-overed element is in the path
+              if (className === 'afterPath') {
+                var elems = document.querySelectorAll('.' + className);
+                // highlight all elements of the path until we hit the mouse-overed
+                // element            
+                for (var i = 0, elem; elem = elems[i]; i++) {
+                  if (elem !== target) {
+                    elem.setAttribute('class', elem.getAttribute('class') +
+                    ' hover');
+                  } else {
+                    break;
+                  }          
+                }
+                elems = document.querySelectorAll('.beforePath');
+                // highlight everything before the path
+                for (var i = 0, elem; elem = elems[i]; i++) {
+                  elem.setAttribute('class', elem.getAttribute('class') +
+                  ' hover');
+                }                    
+              // else if the mouse-overed element is before the path            
+              } else {
+                // highlight all elements right of the mouse-overed element
+                elems = document.querySelectorAll('.beforePath');
+                for (var i = elems.length - 1, elem; elem = elems[i]; i--) {
+                  if (elem !== target) {
+                    elem.setAttribute('class', elem.getAttribute('class') +
+                    ' hover');
+                  } else {
+                    break;
+                  }          
+                }          
+              }
+            }
+          }
+
+          function unhighlight(e) {
+            var target = e.target;
+            if (target.nodeName.toLowerCase() === 'a') {
+              var className = target.className;
+              var elems = document.querySelectorAll('.' + className);
+              for (var i = 0, len = elems.length; i < len; i++) {
+                elems[i].setAttribute(
+                    'class',
+                    elems[i].getAttribute('class').replace(/\s*hover\s*/gi, ''));
+              }
+              if (className === 'afterPath') {
+                var elems = document.querySelectorAll('.beforePath');
+                for (var i = 0, len = elems.length; i < len; i++) {
+                  elems[i].setAttribute(
+                      'class',
+                      elems[i].getAttribute('class').replace(/\s*hover\s*/gi, ''));
+                }          
+              }
+            }
+          }    
+          
+          // add event listeners
+          var breadcrumbNavDiv = document.getElementById('breadcrumbNav');  
+          breadcrumbNavDiv.addEventListener('mouseover', highlight, false); 
+          breadcrumbNavDiv.addEventListener('mouseout', unhighlight, false);                         
+        </script>    
+    </script>  
+  </body>
+</html>

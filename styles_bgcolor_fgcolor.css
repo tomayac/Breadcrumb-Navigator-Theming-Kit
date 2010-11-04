@@ -1,0 +1,61 @@
+A {
+  font-family: sans-serif;
+  white-space: nowrap;  
+  color:#fff;
+  border:1px solid #96cbf8;
+  background:#448ed4;  
+  background:-webkit-gradient(linear, left top, left bottom, from(#70b6f2), color-stop(50%, #448ed4), color-stop(51%, #1a62db), to(#3f8de1));
+  text-decoration:none;
+  border-radius:5px;
+  -webkit-box-shadow:#777 0 0 0 1px;
+  text-shadow:rgba(0,0,0,.4) 0 -1px 0;  
+}
+A.folder {
+  padding-left: 0.5em;
+  padding-right: 0.5em;
+}
+A.link {
+  padding-left: 0.2em;
+  padding-right: 0.2em;  
+}
+A.beforePath {
+  color: white;
+}
+A.afterPath {
+  color: white;
+}
+A:hover {
+  color: black;  
+  border-color:#fff1c9;
+  background:#f4c63f;    
+  background:-webkit-gradient(linear, left top, left bottom, from(#ffe495), color-stop(50%, #f4c63f), color-stop(51%, #ecb207), to(#ffd456));
+}
+A.hover {
+  color: black;
+  border-color:#fff1c9;
+  background:#f4c63f;  
+  background:-webkit-gradient(linear, left top, left bottom, from(#ffe495), color-stop(50%, #f4c63f), color-stop(51%, #ecb207), to(#ffd456));
+}
+SPAN.separatorHighlight {
+  color: brown;
+  font-size: 1.2em;
+  margin-left: 0.1em;
+  margin-right: 0.1em;  
+}
+SPAN.separatorNormal {
+  color: brown;
+  font-weight: bold;
+  margin-left: 0.1em;
+  margin-right: 0.1em;    
+}
+DIV.popUp {
+  text-align: right;  
+  vertical-align: text-top;
+}
+LI.folderBullet {
+  margin-bottom: 0.5em;
+}
+UL {
+  list-style: none;
+  min-height: 5em;  
+}
